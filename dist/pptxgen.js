@@ -51,7 +51,8 @@ Number.isInteger = Number.isInteger || function(value) {
 };
 
 // Detect Node.js
-var NODEJS = ( typeof module !== 'undefined' && module.exports );
+var isBrowser=new Function("try {return this===window;}catch(e){ return false;}"); // see http://stackoverflow.com/questions/17575790/environment-detection-node-js-or-browser
+var NODEJS = !isBrowser();
 
 // [Node.js] <script> includes
 if ( NODEJS ) {
